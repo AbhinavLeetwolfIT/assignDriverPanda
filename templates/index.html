@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigned Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex; /* Use flexbox for layout */
+            flex-direction: row; /* Arrange children horizontally */
+            justify-content: space-between; /* Space items evenly */
+        }
+
+        .data-section {
+            flex: 1; /* Take up remaining space */
+            margin-right: 20px; /* Add some space between sections */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .driver-count {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .driver-count h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .driver-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .driver-list li {
+            margin-bottom: 8px;
+            color: #666;
+            text-align: center;
+        }
+
+        .count {
+            font-weight: bold;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="data-section">
+            <h1>Assigned Data</h1>
+            <!-- Render the table here -->
+            {{ table | safe }}
+        </div>
+
+        <!-- Display driver counts -->
+        <div class="data-section">
+            <div class="driver-count">
+                <h1>Driver Counts</h1>
+                <ul class="driver-list">
+                    {% for driver, count in counts.items() %}
+                        <li>{{ driver }}: <span class="count">{{ count }}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
